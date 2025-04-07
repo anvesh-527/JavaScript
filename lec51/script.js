@@ -39,12 +39,61 @@ document.querySelectorAll("p");
 
 
 // 2. Update the elements 
+//  --> innerhtml,outerhtml,text-content,innexText
+
+// 1. innerhtml --> tag --> I deals only with the content inside it
+document.querySelector("#anvi").innerHTML;
+// to set
+document.querySelector("#anvi").innerHTML='<p>Namasthe Jee</p>';
+
+// 2. outerHtml -- >outerHTML in JavaScript is a property of an HTML element
+//  that gets or sets the entire HTML including the element itself.
+
+// Example 
+{/* <div id="myDiv">
+  <p>Hello</p>
+</div> */}
+
+// const div = document.getElementById('myDiv');
+// console.log(div.outerHTML);
+// Output: <div id="myDiv"><p>Hello</p></div>
+
+// div.outerHTML = '<section><h2>Replaced!</h2></section>';
+// Now the <div> is replaced by <section>
 
 
-let leni = document.getElementById("leni");
-let parent = leni.parentElement;
-// let heading = document.createElement('h1')
-// heading.innerText="Unna Levana Levanate!!"
-// leni.insertAdjacentElement("beforebegin",heading)
-parent.removeChild(leni);
+// 3. textContent
+document.querySelector("#myDiv").textContent;
+// '\n            \n            Second\n            Third\n 
+// Shows spaces also
+// Doesn't care about the hidden elements just prints them 
 
+
+// 4. innerText
+document.querySelector("#myDiv").innerText
+// Second\n\nThird'
+// The way we render on the screen
+// If we hide something that is not visible on the screen.
+
+// Add elements 
+// appendChild,createElement
+
+// 1. appendChild
+let newEle2 = document.createElement("h1");
+newEle2.textContent="Lingi";
+
+// append child
+let parent2 = document.getElementById("myDiv");
+parent2.appendChild(newEle2);
+// Using append child we can only add the elements at the end
+
+// To add anywhere  
+// Positions -> before begin,after begin, before end, after end.
+parent2.insertAdjacentHTML("beforebegin",newEle2);
+parent2.insertAdjacentHTML("afterbegin",newEle2);
+parent2.insertAdjacentHTML("beforeend",newEle2);
+parent2.insertAdjacentHTML("afterend",newEle2);
+// The second parameter is the element to be added.
+
+// removeChild --> to remove elements
+parent2.removeChild(child);
