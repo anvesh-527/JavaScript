@@ -1,20 +1,29 @@
-// async function getData() {
-//     setTimeout(()=>{
-//         console.log("Unna Lenate");
-//     },3100);
-// }
-// getData();
+// Async - await and Fetch API
+// Using async await we can make the async code work similar to sync code
 
-//Await
+// Whenever we mark a part of code as async then only we should move to the next block of code
 
+
+async function getData() {
+    setTimeout(()=>{
+        console.log("I am inside TimeOut Block");
+    },3100);
+}
+let output = getData();  //Always returns a promise
+
+//Await 
+
+// Get Post Put Delete --> Request types
 //Fetch API - get Method
-// async function getData(params) {
-//     let response = await fetch('https://jsonplaceholder.typicode.com/comments?postId=1');
-//     // Parse json - async
-//     let data = await response.json();
-//     console.log("data is: ",data);
-// }
-// getData();
+async function getData(params) {
+    let response = await fetch('https://jsonplaceholder.typicode.com/comments?postId=1');
+    // By marking await we stop the flow of execution until the response is received
+    // Parsing json - async
+    let data = await response.json();
+    console.log("data is: ",data);
+}
+getData();
+
 
 // Fetch API - post method  
 
@@ -31,14 +40,23 @@ const options = {
     headers :  myHeaders,
 };
 
+
+async function getPostData() {
+    const response = await fetch(url,options);
+    let data = await response.json();
+    console.log("Post data is: "+data);
+}
+getPostData();
+
 async function getData() {
     const url = "https://dummyjson.com/posts/";
     const response = await fetch(url);
     let data = await response.json();
     console.log("Get Data is: ",data);
 }
+getData();
 
-async function postData(params) {
+async function postData() {
     const response = await fetch('https://dummyjson.com/posts/add', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
